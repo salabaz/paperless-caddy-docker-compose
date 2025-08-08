@@ -1,0 +1,7 @@
+# replace XYZ with hostname
+https://XYZ.praxisnetz.arpa {
+		reverse_proxy paperless-webserver-1:8000 {
+		        	header_down Referrer-Policy "strict-origin-when-cross-origin"
+		}
+		tls internal
+}

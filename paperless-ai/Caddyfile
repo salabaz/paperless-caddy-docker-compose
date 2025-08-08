@@ -1,0 +1,13 @@
+# replace XYZ with hostname
+https://paperless.paperless-ai.praxisnetz.arpa {
+		reverse_proxy paperless-webserver-1:8000 {
+		        	/header_down Referrer-Policy "strict-origin-when-cross-origin"
+		}
+		tls internal
+}
+https://ai.paperless-ai.praxisnetz.arpa {
+		reverse_proxy paperless-ai:3000 {
+		        	/header_down Referrer-Policy "strict-origin-when-cross-origin"
+		}
+		tls internal
+}
