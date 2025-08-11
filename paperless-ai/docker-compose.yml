@@ -12,6 +12,19 @@ services:
     networks:
       - reverse_proxy
 
+  ollama:
+    volumes:
+      - ollama:/root/.ollama
+    container_name: ollama
+    pull_policy: always
+    tty: true
+    restart: unless-stopped
+    image: ollama/ollama:${OLLAMA_DOCKER_TAG-latest}
+    ports:
+      - "11434:11434"
+    networks:
+      - ai-internal
+
   paperless-ai:
     image: clusterzx/paperless-ai
     container_name: paperless-ai
@@ -106,7 +119,9 @@ volumes:
   caddy_data:
   caddy_config:
   paperless-ai_data:
+  ollama:
 
 networks:
   reverse_proxy:
   internal:
+  ai-internal:
