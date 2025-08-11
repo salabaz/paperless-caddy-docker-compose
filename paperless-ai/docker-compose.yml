@@ -46,6 +46,7 @@ services:
     networks:
       - internal
       - reverse_proxy
+      - ai-internal
 
   broker:
     image: docker.io/library/redis:7
